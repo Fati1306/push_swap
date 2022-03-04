@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:48:12 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/01/20 15:10:08 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/04 11:53:02 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ int	main(int ac, char **av)
 	t_node	*head;
 
 	i = 0;
+	if (ac <= 1)
+		return (0);
+	// arg_check();
 	while (++i < ac)
 	{
 		if (i == 1)

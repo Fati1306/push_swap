@@ -1,7 +1,7 @@
 
 NAME = push_swap
 
-SRCS = push_swap.c utils/ft_atoi.c utils/ft_itoa.c utils/ft_putstr.c utils/ft_strlcpy.c list_utils/add_to_back.c list_utils/create_node.c list_utils/last_node.c list_utils/print_list.c
+SRCS = push_swap.c function_utils/ft_atoi.c function_utils/ft_itoa.c function_utils/ft_putstr.c function_utils/ft_strlcpy.c list_utils/add_to_back.c list_utils/create_node.c list_utils/last_node.c list_utils/print_list.c
 
 OBJS = $(SRCS:.c=.o)
 
