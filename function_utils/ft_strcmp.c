@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_list.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 15:02:47 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/04 15:41:52 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/04 15:51:18 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/04 17:52:46 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-
-void	print_list(t_node *lst)
+int	ft_strcmp(char *s1, char *s2)
 {
-	char	*str;
-	if (lst)
-	{
-		while (lst != NULL)
-		{
-			str = ft_itoa((lst->data));
-			ft_putstr(str);
-			ft_putstr("\n");
-			free(str);
-			lst = lst->next;
-		}
-	}
+	int				i;
+	unsigned char	*str1;
+	unsigned char	*str2;
+
+	i = 0;
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while (str1[i] && str2[i] && str1[i] == str2[i])
+		i++;
+	return (str1[i] - str2[i]);
 }

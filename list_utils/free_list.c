@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_list.c                                       :+:      :+:    :+:   */
+/*   free_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 15:02:47 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/04 15:41:52 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/04 15:24:17 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/04 15:40:23 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	print_list(t_node *lst)
+void	free_list(t_node *list)
 {
-	char	*str;
-	if (lst)
+	t_node	*temp;
+
+	while (list)
 	{
-		while (lst != NULL)
-		{
-			str = ft_itoa((lst->data));
-			ft_putstr(str);
-			ft_putstr("\n");
-			free(str);
-			lst = lst->next;
-		}
+		temp = list;
+		list = list->next;
+		free(temp);
 	}
 }

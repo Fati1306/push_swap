@@ -6,33 +6,46 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:48:12 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/04 11:53:02 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/04 17:56:12 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+static void	init_stack_a(t_node **a_head, int ac, char **av)
 {
 	int		i;
 	t_node	*new_node;
-	t_node	*head;
 
 	i = 0;
-	if (ac <= 1)
-		return (0);
-	// arg_check();
 	while (++i < ac)
 	{
 		if (i == 1)
-			head = create_node(ft_atoi(av[i]));
+			*a_head = create_node(ft_atoi(av[i]));
 		else
 		{
 			new_node = create_node(ft_atoi(av[i]));
-			add_to_back(&head, new_node);
+			add_to_back(a_head, new_node);
 		}
 	}
-	print_list(head);
-	// system("leaks a.out");
+}
+
+void	error_exit(void)
+{
+	write(3, "Error\n", 7);
+	exit(1);
+}
+
+int	main(int ac, char **av)
+{
+	t_node	*a_head;
+	// t_node	*b_head;
+	if (ac <= 1)
+		exit(0);
+	check_args(ac, av);
+	init_stack_a(&a_head, ac, av);
+	print_list(a_head);
+	free_list(a_head);
+	// system("leaks push_swap");
 	return (0);
 }
