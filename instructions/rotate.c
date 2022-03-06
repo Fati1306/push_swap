@@ -1,27 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 15:51:18 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/06 11:26:21 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/06 11:24:58 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/06 13:07:45 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_strcmp(char *s1, char *s2)
+static void	rotate(t_node **head)
 {
-	int				i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	t_node	*temp;
 
-	i = 0;
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (str1[i] && str2[i] && str1[i] == str2[i])
-		i++;
-	return (str1[i] - str2[i]);
+	if (*head && (*head)->next)
+	{
+		temp = last_node(*head);
+		temp->next = *head;
+		*head = (*head)->next;
+		temp->next->next = NULL;
+	}
+}
+
+void	ra(t_node **a_head)
+{
+	rotate(a_head);
+	write(1, "ra\n", 4);
+}
+
+void	rb(t_node **b_head)
+{
+	rotate(b_head);
+	write(1, "rb\n", 4);
+}
+
+void	rr(t_node **a_head, t_node **b_head)
+{
+	rotate(a_head);
+	rotate(b_head);
+	write(1, "rr\n", 4);
 }

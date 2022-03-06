@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:44:19 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/04 18:37:47 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/06 13:20:57 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,18 @@ void	add_to_back(t_node **lst, t_node *new);
 t_node	*last_node(t_node *lst);
 void	print_list(t_node *lst);
 void	free_list(t_node *list);
+t_node	*before_last_node(t_node *lst);
+
+void	sa(t_node **a_head);
+void	sb(t_node **b_head);
+void	ss(t_node **a_head, t_node **b_head);
+void	pa(t_node **a_head, t_node **b_head);
+void	pb(t_node **b_head, t_node **a_head);
+void	ra(t_node **a_head);
+void	rb(t_node **b_head);
+void	rr(t_node **a_head, t_node **b_head);
+void	rra(t_node **a_head);
+void	rrb(t_node **b_head);
+void	rrr(t_node **a_head, t_node **b_head);
 
 #endif

@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 15:51:18 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/06 11:26:21 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/06 11:12:45 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/06 11:25:36 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_strcmp(char *s1, char *s2)
+static void	push(t_node **first_head, t_node **second_head)
 {
-	int				i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	t_node	*temp;
+	
+	if (second_head)
+	{
+		temp = *second_head;
+		*second_head = (*second_head)->next;
+		temp->next = *first_head;
+		*first_head = temp;
+	}
+}
 
-	i = 0;
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (str1[i] && str2[i] && str1[i] == str2[i])
-		i++;
-	return (str1[i] - str2[i]);
+void	pa(t_node **a_head, t_node **b_head)
+{
+	push(a_head, b_head);
+	write(1, "pa\n", 4);
+}
+
+void	pb(t_node **b_head, t_node **a_head)
+{
+	push(b_head, a_head);
+	write(1, "pb\n", 4);
 }
