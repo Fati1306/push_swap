@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:42:55 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/04 15:39:47 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/07 10:15:21 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_node	*create_node(int data)
 	if (new_element == NULL)
 		return (NULL);
 	new_element->data = data;
+	new_element->index = 0;
 	new_element->next = NULL;
 	return (new_element);
 }

@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:48:12 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/06 14:15:54 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/07 10:17:03 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,18 @@ static void	sort_stack(int nums, t_node **a_head, t_node **b_head)
 	if (nums == 2)
 	{
 		ra(a_head);
-		return (0);
+		return ;
 	}
 	else
 		index_stack(a_head);
 	if (nums == 3)
 		sort_three(a_head, b_head);
-	else if (nums > 3 && nums < 6)
-		sort_five(a_head, b_head);
-	else
-		sort_five_plus(a_head, b_head);
+	// else if (nums > 3 && nums < 6)
+	// 	sort_five(a_head, b_head);
+	// else
+	// 	sort_five_plus(a_head, b_head);
+	(void)b_head;
+	(void)nums;
 }
 
 void	error_exit(void)
@@ -71,7 +73,7 @@ int	main(int ac, char **av)
 	write(1, "\nb list:\n", 9);
 	print_list(b_head);
 	write(1, "\n", 2);
-	// sort_stack(ac - 1, &a_head, &b_head);
+	sort_stack(ac - 1, &a_head, &b_head);
 
 	// b_head = create_node(3);
 	// sa(&a_head);
@@ -90,7 +92,6 @@ int	main(int ac, char **av)
 	write(1, "\nnew b list:\n", 13);
 	print_list(b_head);
 
-	free_list(a_head);
 	// system("leaks push_swap");
 	return (0);
 }
