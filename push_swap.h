@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:44:19 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/08 11:41:22 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:17:44 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ typedef struct s_node
 	int				index;
 	struct s_node	*next;
 }	t_node;
+
+typedef struct s_sort
+{
+	int	size;
+	int	to_push;
+	int	min;
+	int	mid;
+	int	max;
+	int	total_pushed;
+}	t_sort;
 
 void	ft_putstr(char *s);
 int		ft_atoi(const char *str);
@@ -42,6 +52,7 @@ void	free_list(t_node *list);
 t_node	*before_last_node(t_node *lst);
 void	index_stack(t_node **head);
 int		find_smallest_index(t_node *lst);
+int		list_size(t_node *lst);
 
 void	sa(t_node **a_head);
 void	sb(t_node **b_head);
@@ -58,5 +69,6 @@ void	rrr(t_node **a_head, t_node **b_head);
 void	sort_three(t_node **head);
 void	sort_four(t_node **a_head, t_node **b_head);
 void	sort_five(t_node **a_head, t_node **b_head);
+void	sort_six_plus(t_node **a_head, t_node **b_head);
 
 #endif

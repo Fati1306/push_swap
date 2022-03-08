@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   list_size.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 11:12:45 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/08 16:33:57 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/08 14:35:43 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/08 14:36:48 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	push(t_node **first_head, t_node **second_head)
+int	list_size(t_node *lst)
 {
-	t_node	*temp;
+	int	i;
 
-	if (second_head)
+	i = 0;
+	while (lst)
 	{
-		temp = *second_head;
-		*second_head = (*second_head)->next;
-		temp->next = *first_head;
-		*first_head = temp;
+		lst = lst->next;
+		i++;
 	}
-}
-
-void	pa(t_node **a_head, t_node **b_head)
-{
-	push(a_head, b_head);
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_node **b_head, t_node **a_head)
-{
-	push(b_head, a_head);
-	write(1, "pb\n", 3);
+	return (i);
 }
