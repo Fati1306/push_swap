@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:44:19 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/07 18:22:50 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/08 11:41:22 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void	rrr(t_node **a_head, t_node **b_head);
 
 void	sort_three(t_node **head);
 void	sort_four(t_node **a_head, t_node **b_head);
+void	sort_five(t_node **a_head, t_node **b_head);
 
 #endif
