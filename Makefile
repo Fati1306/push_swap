@@ -21,7 +21,7 @@ $(NAME): $(OBJS)
 
 	
 test:
-	./push_swap 2 1 0 3
+	./push_swap 1 2 3 0
 
 clean:
 	$(RM) $(OBJS)

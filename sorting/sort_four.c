@@ -6,29 +6,46 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 17:44:11 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/07 19:53:43 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/08 11:27:05 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	sort_four(t_node **a_head, t_node **b_head)
+static void	push_smallest_i(t_node **a_head, t_node **b_head, int smallest_i)
 {
 	t_node	*a_lst;
-	int		smallest_index;
+	int		lst_index;
 
-	smallest_index = find_smallest_index(*a_head);
 	a_lst = *a_head;
+	lst_index = 0;
 	while (a_lst)
 	{
-		if (a_lst->index == smallest_index)
+		if (a_lst->index == smallest_i)
 		{
-			// pb(b_head, a_head);
+			while ((*a_head)->index != smallest_i)
+			{
+				if (lst_index > 2)
+					rra(a_head);
+				else
+					ra(a_head);
+			}
+			pb(b_head, a_head);
 			break ;
 		}
+		lst_index++;
 		a_lst = a_lst->next;
 	}
+}
+
+void	sort_four(t_node **a_head, t_node **b_head)
+{
+	int		smallest_index;
+
+	if (check_sorted_stack(*a_head) == 0)
+		return ;
+	smallest_index = find_smallest_index(*a_head);
+	push_smallest_i(a_head, b_head, smallest_index);
 	sort_three(a_head);
-	// pa(a_head, b_head);
-	(void)b_head;
+	pa(a_head, b_head);
 }

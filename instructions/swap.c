@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:44:59 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/06 11:25:48 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/08 10:56:45 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ static void	swap(t_node **head)
 void	sa(t_node **a_head)
 {
 	swap(a_head);
-	write(1, "sa\n", 4);
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_node **b_head)
 {
 	swap(b_head);
-	write(1, "sb\n", 4);
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_node **a_head, t_node **b_head)
 {
 	swap(a_head);
 	swap(b_head);
-	write(1, "ss\n", 4);
+	write(1, "ss\n", 3);
 }

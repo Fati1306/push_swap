@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:48:12 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/07 18:34:05 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/08 11:20:54 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void	sort_stack(int nums, t_node **a_head, t_node **b_head)
 		sort_four(a_head, b_head);
 	// else
 	// 	sort_five_plus(a_head, b_head);
+	(void)b_head;
 }
 
 void	error_exit(void)
