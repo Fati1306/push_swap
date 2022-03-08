@@ -6,41 +6,104 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:16:54 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/07 11:19:50 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:13:30 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	sort_three(t_node **head)
+static void	set_index(int *min, int *mid, t_node **head)
 {
-	if ((*head)->index == 0)
+	t_node	*l;
+
+	l = *head;
+	if (l->index < l->next->index && l->index < l->next->next->index)
+	{
+		*min = l->index;
+		if (l->next->index < l->next->next->index)
+			*mid = l->next->index;
+		else
+			*mid = l->next->next->index;
+	}
+	else if (l->next->index < l->index && l->next->index < l->next->next->index)
+	{
+		*min = l->next->index;
+		if (l->index < l->next->next->index)
+			*mid = l->index;
+		else
+			*mid = l->next->next->index;
+	}
+	else
+	{
+		*min = l->next->next->index;
+		if (l->index < l->next->index)
+			*mid = l->index;
+		else
+			*mid = l->next->index;
+	}
+}
+
+static void	sort_stack(int min, int mid, t_node **head)
+{
+	if ((*head)->index == min)
 	{
 		rra(head);
 		sa(head);
 	}
-	else if ((*head)->index == 1)
+	else if ((*head)->index == mid)
 	{
-		if ((*head)->next->index == 0)
+		if ((*head)->next->index == min)
 			sa(head);
 		else
 			rra(head);
 	}
 	else
 	{
-		ra(head);
-		if ((*head)->next->index == 0)
+		if ((*head)->next->index == min)
+			ra(head);
+		else
+		{
+			rra(head);
+			rra(head);
 			sa(head);
+		}
 	}
 }
 
-// 021
-// // if index is 0: rra, sa
-// 102
-// // if index is 1 & next index is 0: sa
-// 120
-// // if index is 1 / else: rra
-// 201
-// // if index is 2 & next index is 0: ra
-// 210
-// // if index is 2 / else: ra, sa
+void	sort_three(t_node **head)
+{
+	int	min;
+	int	mid;
+
+	set_index(&min, &mid, head);
+	sort_stack(min, mid, head);
+	// if ((*head)->index == 0)
+	// {
+	// 	rra(head);
+	// 	sa(head);
+	// }
+	// else if ((*head)->index == 1)
+	// {
+	// 	if ((*head)->next->index == 0)
+	// 		sa(head);
+	// 	else
+	// 		rra(head);
+	// }
+	// else
+	// {
+	// 	if ((*head)->next->index == 0)
+	// 		ra(head);
+	// 	else
+	// 	{
+	// 		rra(head);
+	// 		rra(head);
+	// 		sa(head);
+	// 	}
+	// }
+}
+			// sa(head);
+			// rra(head);
+		// ra(head);
+
+		// if ((*head)->next->index == 0)
+		// 	sa(head);

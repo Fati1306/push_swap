@@ -6,12 +6,13 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:48:12 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/07 11:21:27 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:34:05 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// to fix: sort 4 segfaults on pb
 static void	init_stack_a(t_node **a_head, int ac, char **av)
 {
 	int		i;
@@ -41,12 +42,10 @@ static void	sort_stack(int nums, t_node **a_head, t_node **b_head)
 		index_stack(a_head);
 	if (nums == 3)
 		sort_three(a_head);
-	// else if (nums > 3 && nums < 6)
-	// 	sort_five(a_head, b_head);
+	else if (nums > 3 && nums < 6)
+		sort_four(a_head, b_head);
 	// else
 	// 	sort_five_plus(a_head, b_head);
-	(void)b_head;
-	(void)nums;
 }
 
 void	error_exit(void)
@@ -69,11 +68,11 @@ int	main(int ac, char **av)
 	init_stack_a(&a_head, ac, av);
 	if (check_sorted_stack(a_head) == 0)
 		return (0);
-	// write(1, "\na list:\n", 9);
-	// print_list(a_head);
+	write(1, "\na list:\n", 9);
+	print_list(a_head);
 	// write(1, "\nb list:\n", 9);
 	// print_list(b_head);
-	// write(1, "\n", 2);
+	write(1, "\n", 2);
 	sort_stack(ac - 1, &a_head, &b_head);
 
 	// b_head = create_node(3);
@@ -88,8 +87,8 @@ int	main(int ac, char **av)
 	// rra(&a_head);
 	// rrb(&b_head);
 	// rrr(&a_head, &b_head);
-	// write(1, "\nnew a list:\n", 13);
-	// print_list(a_head);
+	write(1, "\nnew a list:\n", 13);
+	print_list(a_head);
 	// write(1, "\nnew b list:\n", 13);
 	// print_list(b_head);
 

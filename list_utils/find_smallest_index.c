@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   find_smallest_index.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 11:12:45 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/07 19:52:10 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/07 18:15:45 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/07 18:20:51 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	push(t_node **first_head, t_node **second_head)
+int	find_smallest_index(t_node *lst)
 {
-	t_node	*temp;
+	int	smallest;
 
-	if (second_head)
+	smallest = lst->index;
+	while (lst)
 	{
-		temp = *second_head;
-		*second_head = (*second_head)->next;
-		temp->next = *first_head;
-		*first_head = temp;
+		if (lst->index < smallest)
+			smallest = lst->index;
+		lst = lst->next;
 	}
-}
-
-void	pa(t_node **a_head, t_node **b_head)
-{
-	push(a_head, b_head);
-	write(1, "pa\n", 4);
-}
-
-void	pb(t_node **b_head, t_node **a_head)
-{
-	push(b_head, a_head);
-	write(1, "pb\n", 4);
+	return (smallest);
 }
