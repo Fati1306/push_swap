@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 14:27:44 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/08 17:56:33 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:45:39 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,20 @@ static void	push_elements(t_sort *s, t_node **a_head, t_node **b_head, t_node *l
 	}
 }
 
+static int	search_for_index(t_node **b_head, int index)
+{
+	t_node	*lst;
+
+	lst = *b_head;
+	while (lst)
+	{
+		if (lst->index == index)
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
+}
+
 static void	sort_rest(t_node **a_head, t_node **b_head)
 {
 	int		index;
@@ -40,25 +54,48 @@ static void	sort_rest(t_node **a_head, t_node **b_head)
 	t_node	*last_n;
 
 	b_lst = *b_head;
+	last_n = last_node(*a_head);
+	last_n->index = -1;
 	while (*b_head)
 	{
 		index = (*a_head)->index - 1;
-		last_n = last_node(*b_head);
-		if ((*b_head)->index <= index && (*b_head)->index > last_n->index)
+		if (search_for_index(b_head, index) == 0)
 		{
-			if ((*b_head)->index == index)
+			if ((*b_head)->index < (*a_head)->index
+				&& (*b_head)->index > last_n->index)
 				pa(a_head, b_head);
+			if ((*a_head)->index != index)
+				ra(a_head);
 			else
-				rb(b_head);
+			{
+				//  push the wanted element to the top of the helping stack using the closest path
+                // either by rotating or reverse rotating. then push to a
+			}
 		}
 		else
 		{
-			while ((*b_head)->index != index)
-				rb(b_head);
+		// it is at the end of the stack
+            // reverse rotate element in stack then push to a
 		}
-		if ((*b_head)->next == NULL)
-			pa(a_head, b_head);
 	}
+	//   UNFAKE the last element
+	//     WHILE the stack isn't sorted yet, reverse rotate
+
+		// index = (*a_head)->index - 1;
+		// if ((*b_head)->index <= index && (*b_head)->index > last_n->index)
+		// {
+		// 	if ((*b_head)->index == index)
+		// 		pa(a_head, b_head);
+		// 	else
+		// 		rb(b_head);
+		// }
+		// else
+		// {
+		// 	while ((*b_head)->index != index)
+		// 		rb(b_head);
+		// }
+		// if ((*b_head)->next == NULL)
+		// 	pa(a_head, b_head);
 }
 
 // static void	sort_rest(t_node **a_head, t_node **b_head)
