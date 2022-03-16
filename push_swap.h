@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:44:19 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/08 15:17:44 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/16 16:26:03 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_sort
 	int	mid;
 	int	max;
 	int	total_pushed;
+	int	last_n_index;
+	t_node	*faked_node;
 }	t_sort;
 
 void	ft_putstr(char *s);
