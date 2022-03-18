@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 14:27:44 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/16 17:34:24 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/18 10:08:49 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ static void	push_to_b(t_sort *s, t_node **a_head, t_node **b_head)
 			while ((*a_head)->index != lst->index)
 			{
 				if (lst->index > (s->size - s->total_pushed) / 2)
-					rra(a_head);
-				else
 					ra(a_head);
+				else
+					rra(a_head);
 			}
 			pb(b_head, a_head);
+			if ((*b_head)->index < s->mid)
+				rb(b_head);
 			s->total_pushed++;
 			break ;
 		}
@@ -109,6 +111,50 @@ static void	sort_rest(t_node **a_head, t_node **b_head, t_sort *s)
 	while (check_sorted_stack(*a_head) != 0)
 		rra(a_head);
 }
+
+	// write(1, "\na list:\n", 10);
+	// print_list(*a_head);
+	// write(1, "\nb list:\n", 10);
+	// print_list(*b_head);
+	// size = list_size(*a_head);
+	
+		// index = (*a_head)->index - 1;
+		// if ((*b_head)->index <= index && (*b_head)->index > last_n->index)
+		// {
+		// 	if ((*b_head)->index == index)
+		// 		pa(a_head, b_head);
+		// 	else
+		// 		rb(b_head);
+		// }
+		// else
+		// {
+		// 	while ((*b_head)->index != index)
+		// 		rb(b_head);
+		// }
+		// if ((*b_head)->next == NULL)
+		// 	pa(a_head, b_head);
+
+// static void	sort_rest(t_node **a_head, t_node **b_head)
+// {
+// 	int		index;
+// 	t_node	*b_lst;
+
+// 	b_lst = *b_head;
+// 	while (*b_head)
+// 	{
+// 		index = (*a_head)->index - 1;
+// 		if ((*b_head)->index == index)
+// 			pa(a_head, b_head);
+// 		// else if ()
+// 		// 	sb(b_head);
+// 		else
+// 			break ;
+// 	}
+// }
+// while b_head
+// if b_head index = a_head index - 1 push to a
+// else if a_head index - 1 > total pushed / 2
+// rotate til b_head index == a head index -1
 
 void	sort_six_plus(t_node **a_head, t_node **b_head)
 {
