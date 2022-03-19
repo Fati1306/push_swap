@@ -6,15 +6,17 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 14:27:44 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/18 10:08:49 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/19 18:32:27 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include <stdio.h>
 
 static void	push_to_b(t_sort *s, t_node **a_head, t_node **b_head)
 {
 	t_node	*lst;
+	int		i;
 
 	lst = *a_head;
 	while (lst)
@@ -23,15 +25,15 @@ static void	push_to_b(t_sort *s, t_node **a_head, t_node **b_head)
 		{
 			while ((*a_head)->index != lst->index)
 			{
-				if (lst->index > (s->size - s->total_pushed) / 2)
-					ra(a_head);
-				else
+				i = index_of_node(*a_head, lst->data);
+				if (i > (list_size(*a_head) / 2))
 					rra(a_head);
+				else
+					ra(a_head);
 			}
 			pb(b_head, a_head);
 			if ((*b_head)->index < s->mid)
 				rb(b_head);
-			s->total_pushed++;
 			break ;
 		}
 		lst = lst->next;
@@ -59,7 +61,6 @@ static void	push_to_a(int index, t_node **a_head, t_node **b_head)
 	t_node	*b_lst;
 
 	size = list_size(*b_head);
-	i = 0;
 	b_lst = *b_head;
 	while (b_lst)
 	{
@@ -67,6 +68,7 @@ static void	push_to_a(int index, t_node **a_head, t_node **b_head)
 		{
 			while ((*b_head)->index != index)
 			{
+				i = index_of_node(*b_head, b_lst->data);
 				if (i > size / 2)
 					rrb(b_head);
 				else
@@ -76,7 +78,6 @@ static void	push_to_a(int index, t_node **a_head, t_node **b_head)
 			return ;
 		}
 		b_lst = b_lst->next;
-		i++;
 	}
 }
 
@@ -161,7 +162,6 @@ void	sort_six_plus(t_node **a_head, t_node **b_head)
 	t_sort	s;
 
 	s.size = list_size(*a_head);
-	s.total_pushed = 0;
 	while (s.size > 5)
 	{
 		s.to_push = (s.size - 5) / 3 + 1;

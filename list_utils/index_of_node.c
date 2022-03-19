@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index_stack.c                                      :+:      :+:    :+:   */
+/*   index_of_node.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 14:15:17 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/19 13:23:19 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/19 13:18:57 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/19 14:05:40 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	index_stack(t_node **head)
+int	index_of_node(t_node *lst, int data)
 {
-	t_node	*node_to_index;
-	t_node	*lst;
+	int	i;
 
-	node_to_index = *head;
-	while (node_to_index)
+	i = 0;
+	while (lst)
 	{
-		lst = *head;
-		while (lst)
-		{
-			if (node_to_index->data > lst->data)
-				node_to_index->index++;
-			lst = lst->next;
-		}
-		node_to_index = node_to_index->next;
+		if (lst->data == data)
+			return (i);
+		i++;
+		lst = lst->next;
 	}
+	return (-1);
 }

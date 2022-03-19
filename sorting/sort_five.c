@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 11:36:14 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/18 10:31:24 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:16:39 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	push_two_elm(t_node **a_head, t_node **b_head, int smallest_i)
 {
 	t_node	*lst;
+	int		i;
 
 	lst = *a_head;
 	while (lst)
@@ -23,7 +24,8 @@ static void	push_two_elm(t_node **a_head, t_node **b_head, int smallest_i)
 		{
 			while ((*a_head)->index != lst->index)
 			{
-				if (lst->index > 2)
+				i = index_of_node(*a_head, lst->data);
+				if (i > 2)
 					rra(a_head);
 				else
 					ra(a_head);
