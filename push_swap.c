@@ -6,12 +6,13 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:48:12 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/08 17:57:06 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/21 14:47:41 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+// problem: when checking if wanted element is in stack b, instead of pushing the head to a if 
+// first condition applies it goes to second condition and rotates until wanted element is at the top
 static void	init_stack_a(t_node **a_head, int ac, char **av)
 {
 	int		i;
@@ -54,6 +55,20 @@ void	error_exit(void)
 	write(3, "Error\n", 7);
 	exit(1);
 }
+#include <stdio.h>
+void	printt(t_node *lst)
+{
+	while (lst->next)
+		lst = lst->next;
+	while (lst->previous)
+	{
+		printf("\nnode: %i prev: %i", lst->data, lst->previous->data);
+		fflush(stdout);
+		lst = lst->previous;
+	}
+	printf("\nfirst node: %i\n", lst->data);
+	fflush(stdout);
+}
 
 int	main(int ac, char **av)
 {
@@ -71,8 +86,8 @@ int	main(int ac, char **av)
 		return (0);
 	// write(1, "\na list:\n", 9);
 	// print_list(a_head);
-	// // write(1, "\nb list:\n", 9);
-	// // print_list(b_head);
+	// write(1, "\nb list:\n", 9);
+	// print_list(b_head);
 	// write(1, "\n", 2);
 	sort_stack(ac - 1, &a_head, &b_head);
 
@@ -90,7 +105,9 @@ int	main(int ac, char **av)
 	// rrr(&a_head, &b_head);
 	// write(1, "\nnew a list:\n", 13);
 	// print_list(a_head);
+	// printt(a_head);
 	// write(1, "\nnew b list:\n", 13);
+	// printt(b_head);
 	// print_list(b_head);
 
 	// system("leaks push_swap");

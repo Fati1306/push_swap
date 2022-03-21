@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:44:19 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/19 18:22:28 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/21 14:40:15 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_node
 	int				data;
 	int				index;
 	struct s_node	*next;
+	struct s_node	*previous;
 }	t_node;
 
 typedef struct s_sort
@@ -30,6 +31,7 @@ typedef struct s_sort
 	int	min;
 	int	mid;
 	int	max;
+	int	push_side;
 	int	last_n_index;
 	t_node	*faked_node;
 }	t_sort;
@@ -48,6 +50,7 @@ int		check_sorted_stack(t_node *head);
 t_node	*create_node(int data);
 void	add_to_back(t_node **lst, t_node *new);
 t_node	*last_node(t_node *lst);
+int		last_node_index(t_node *lst);
 void	print_list(t_node *lst);
 void	free_list(t_node *list);
 t_node	*before_last_node(t_node *lst);
@@ -55,6 +58,7 @@ void	index_stack(t_node **head);
 int		find_smallest_index(t_node *lst);
 int		list_size(t_node *lst);
 int		index_of_node(t_node *lst, int data);
+void	push_side(t_node *head, t_sort *s, int min, int max);
 
 void	sa(t_node **a_head);
 void	sb(t_node **b_head);
