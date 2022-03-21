@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 14:27:44 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/21 15:09:04 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/21 15:23:11 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,32 +22,36 @@ static void	push_to_b(t_sort *s, t_node **a_head, t_node **b_head)
 		else
 			ra(a_head);
 	}
-		pb(b_head, a_head);
-		if ((*b_head)->index < s->mid)
-			rb(b_head);
-}
-
-static int	search_for_index(t_node **b_head, int index)
-{
-	t_node	*lst;
-
-	lst = *b_head;
-	while (lst)
-	{
-		if (lst->index == index)
-			return (0);
-		lst = lst->next;
-	}
-	return (1);
+	pb(b_head, a_head);
+	if ((*b_head)->index < s->mid)
+		rb(b_head);
 }
 
 static void	push_wanted_index(int index, t_node **b_head, t_sort *s)
 {
 	push_side(*b_head, s, index, index);
-		if (s->push_side)
-			rrb(b_head);
+	if (s->push_side)
+		rrb(b_head);
+	else
+		rb(b_head);
+}
+
+static void	pick(t_node **a_head, t_node **b_head, int index, t_sort *s)
+{
+	if (search_for_index(b_head, index) == 0)
+	{
+		if ((*b_head)->index < (*a_head)->index
+			&& (*b_head)->index > last_node_index(*a_head))
+		{
+			pa(a_head, b_head);
+			if ((*a_head)->index != index)
+				ra(a_head);
+		}
 		else
-			rb(b_head);
+			push_wanted_index(index, b_head, s);
+	}
+	else
+		rra(a_head);
 }
 
 static void	sort_rest(t_node **a_head, t_node **b_head, t_sort *s)
@@ -60,20 +64,7 @@ static void	sort_rest(t_node **a_head, t_node **b_head, t_sort *s)
 	while (*b_head)
 	{
 		index = (*a_head)->index - 1;
-		if (search_for_index(b_head, index) == 0)
-		{
-			if ((*b_head)->index < (*a_head)->index
-				&& (*b_head)->index > last_node_index(*a_head))
-			{
-				pa(a_head, b_head);
-				if ((*a_head)->index != index)
-					ra(a_head);
-			}
-			else
-				push_wanted_index(index, b_head, s);
-		}
-		else
-			rra(a_head);
+		pick(a_head, b_head, index, s);
 	}
 	s->faked_node->index = s->last_n_index;
 	while (check_sorted_stack(*a_head) != 0)

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index_of_node.c                                    :+:      :+:    :+:   */
+/*   search_for_index.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 13:18:57 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/21 15:15:39 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/21 15:18:22 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/21 15:18:49 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	index_of_node(t_node *lst, int data)
+int	search_for_index(t_node **b_head, int index)
 {
-	int	i;
+	t_node	*lst;
 
-	i = 0;
+	lst = *b_head;
 	while (lst)
 	{
-		if (lst->data == data)
-			return (i);
-		i++;
+		if (lst->index == index)
+			return (0);
 		lst = lst->next;
 	}
-	return (-1);
+	return (1);
 }
