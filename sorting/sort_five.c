@@ -6,16 +6,16 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 11:36:14 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/21 10:51:36 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/21 17:13:41 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	push_two_elm(t_node **a_head, t_node **b_head, int smallest_i)
+static void	push_elms(t_node **a_head, t_node **b_head, int smallest_i, t_i *i)
 {
 	t_node	*lst;
-	int		i;
+	int		in;
 
 	lst = *a_head;
 	while (lst)
@@ -24,31 +24,31 @@ static void	push_two_elm(t_node **a_head, t_node **b_head, int smallest_i)
 		{
 			while ((*a_head)->index != lst->index)
 			{
-				i = index_of_node(*a_head, lst->data);
-				if (i > 2)
-					rra(a_head);
+				in = index_of_node(*a_head, lst->data);
+				if (in > 2)
+					rra(a_head, i);
 				else
-					ra(a_head);
+					ra(a_head, i);
 			}
 			lst = lst->next;
-			pb(b_head, a_head);
+			pb(b_head, a_head, i);
 		}
 		else
 			lst = lst->next;
 	}
 }
 
-void	sort_five(t_node **a_head, t_node **b_head)
+void	sort_five(t_node **a_head, t_node **b_head, t_i *i)
 {
 	int		smallest_index;
 
 	if (check_sorted_stack(*a_head) == 0)
 		return ;
 	smallest_index = find_smallest_index(*a_head);
-	push_two_elm(a_head, b_head, smallest_index);
-	sort_three(a_head);
-	pa(a_head, b_head);
-	pa(a_head, b_head);
+	push_elms(a_head, b_head, smallest_index, i);
+	sort_three(a_head, i);
+	pa(a_head, b_head, i);
+	pa(a_head, b_head, i);
 	if (check_sorted_stack(*a_head) != 0)
-		sa(a_head);
+		sa(a_head, i);
 }

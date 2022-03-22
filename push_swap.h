@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:44:19 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/21 15:18:05 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/21 17:34:16 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,19 @@ typedef struct s_sort
 	int		min;
 	int		mid;
 	int		max;
+	int		index;
 	int		push_side;
 	int		last_n_index;
 	t_node	*faked_node;
 }	t_sort;
+
+typedef struct s_instructions
+{
+	int	ra;
+	int	rb;
+	int	rra;
+	int	rrb;
+}	t_i;
 
 void	ft_putstr(char *s);
 int		ft_atoi(const char *str);
@@ -43,6 +52,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strcmp(char *s1, char *s2);
 
 void	error_exit(void);
+void	init_i(t_i *i);
 
 void	check_args(int ac, char **av);
 int		check_sorted_stack(t_node *head);
@@ -61,21 +71,22 @@ int		index_of_node(t_node *lst, int data);
 void	push_side(t_node *head, t_sort *s, int min, int max);
 int		search_for_index(t_node **b_head, int index);
 
-void	sa(t_node **a_head);
-void	sb(t_node **b_head);
-void	ss(t_node **a_head, t_node **b_head);
-void	pa(t_node **a_head, t_node **b_head);
-void	pb(t_node **b_head, t_node **a_head);
-void	ra(t_node **a_head);
-void	rb(t_node **b_head);
-void	rr(t_node **a_head, t_node **b_head);
-void	rra(t_node **a_head);
-void	rrb(t_node **b_head);
-void	rrr(t_node **a_head, t_node **b_head);
+void	sa(t_node **a_head, t_i *i);
+void	sb(t_node **b_head, t_i *i);
+void	ss(t_node **a_head, t_node **b_head, t_i *i);
+void	pa(t_node **a_head, t_node **b_head, t_i *i);
+void	pb(t_node **b_head, t_node **a_head, t_i *i);
+void	ra(t_node **a_head, t_i *i);
+void	rb(t_node **b_head, t_i *i);
+void	rr(t_node **a_head, t_node **b_head, t_i *i);
+void	rra(t_node **a_head, t_i *i);
+void	rrb(t_node **b_head, t_i *i);
+void	rrr(t_node **a_head, t_node **b_head, t_i *i);
+void	check_instructions(t_i *i, int check);
 
-void	sort_three(t_node **head);
-void	sort_four(t_node **a_head, t_node **b_head);
-void	sort_five(t_node **a_head, t_node **b_head);
-void	sort_six_plus(t_node **a_head, t_node **b_head);
+void	sort_three(t_node **head, t_i *i);
+void	sort_four(t_node **a_head, t_node **b_head, t_i *i);
+void	sort_five(t_node **a_head, t_node **b_head, t_i *i);
+void	sort_six_plus(t_node **a_head, t_node **b_head, t_i *i);
 
 #endif

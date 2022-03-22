@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:48:12 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/21 15:24:13 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/21 17:03:14 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,34 @@ static void	init_stack_a(t_node **a_head, int ac, char **av)
 	}
 }
 
+void	init_i(t_i *i)
+{
+	i->ra = 0;
+	i->rb = 0;
+	i->rra = 0;
+	i->rrb = 0;
+}
+
 static void	sort_stack(int nums, t_node **a_head, t_node **b_head)
 {
+	t_i	i;
+
+	init_i(&i);
 	if (nums == 2)
 	{
-		ra(a_head);
+		ra(a_head, &i);
 		return ;
 	}
 	else
 		index_stack(a_head);
 	if (nums == 3)
-		sort_three(a_head);
+		sort_three(a_head, &i);
 	else if (nums == 4)
-		sort_four(a_head, b_head);
+		sort_four(a_head, b_head, &i);
 	else if (nums == 5)
-		sort_five(a_head, b_head);
+		sort_five(a_head, b_head, &i);
 	else
-		sort_six_plus(a_head, b_head);
+		sort_six_plus(a_head, b_head, &i);
 }
 
 void	error_exit(void)

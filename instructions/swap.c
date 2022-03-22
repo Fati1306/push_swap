@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:44:59 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/20 18:47:57 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/21 17:36:10 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,24 @@ static void	swap(t_node **head)
 	}
 }
 
-void	sa(t_node **a_head)
+void	sa(t_node **a_head, t_i *i)
 {
 	swap(a_head);
+	check_instructions(i, 0);
 	write(1, "sa\n", 3);
 }
 
-void	sb(t_node **b_head)
+void	sb(t_node **b_head, t_i *i)
 {
 	swap(b_head);
+	check_instructions(i, 0);
 	write(1, "sb\n", 3);
 }
 
-void	ss(t_node **a_head, t_node **b_head)
+void	ss(t_node **a_head, t_node **b_head, t_i *i)
 {
 	swap(a_head);
 	swap(b_head);
+	check_instructions(i, 0);
 	write(1, "ss\n", 3);
 }

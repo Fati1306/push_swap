@@ -6,72 +6,70 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 14:27:44 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/21 15:23:11 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/21 17:12:42 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	push_to_b(t_sort *s, t_node **a_head, t_node **b_head)
+static void	push_to_b(t_sort *s, t_node **a_head, t_node **b_head, t_i *i)
 {
 	push_side(*a_head, s, s->min, s->max);
 	while (!((*a_head)->index >= s->min && (*a_head)->index <= s->max))
 	{
 		if (s->push_side)
-			rra(a_head);
+			rra(a_head, i);
 		else
-			ra(a_head);
+			ra(a_head, i);
 	}
-	pb(b_head, a_head);
+	pb(b_head, a_head, i);
 	if ((*b_head)->index < s->mid)
-		rb(b_head);
+		rb(b_head, i);
 }
 
-static void	push_wanted_index(int index, t_node **b_head, t_sort *s)
+static void	push_wanted_index(int index, t_node **b_head, t_sort *s, t_i *i)
 {
 	push_side(*b_head, s, index, index);
 	if (s->push_side)
-		rrb(b_head);
+		rrb(b_head, i);
 	else
-		rb(b_head);
+		rb(b_head, i);
 }
 
-static void	pick(t_node **a_head, t_node **b_head, int index, t_sort *s)
+static void	pick(t_node **a_head, t_node **b_head, t_sort *s, t_i *i)
 {
-	if (search_for_index(b_head, index) == 0)
+	if (search_for_index(b_head, s->index) == 0)
 	{
 		if ((*b_head)->index < (*a_head)->index
 			&& (*b_head)->index > last_node_index(*a_head))
 		{
-			pa(a_head, b_head);
-			if ((*a_head)->index != index)
-				ra(a_head);
+			pa(a_head, b_head, i);
+			if ((*a_head)->index != s->index)
+				ra(a_head, i);
 		}
 		else
-			push_wanted_index(index, b_head, s);
+			push_wanted_index(s->index, b_head, s, i);
 	}
 	else
-		rra(a_head);
+		rra(a_head, i);
 }
 
-static void	sort_rest(t_node **a_head, t_node **b_head, t_sort *s)
+static void	sort_rest(t_node **a_head, t_node **b_head, t_sort *s, t_i *i)
 {
-	int		index;
-
 	s->faked_node = last_node(*a_head);
 	s->last_n_index = s->faked_node->index;
 	s->faked_node->index = -1;
 	while (*b_head)
 	{
-		index = (*a_head)->index - 1;
-		pick(a_head, b_head, index, s);
+		s->index = (*a_head)->index - 1;
+		pick(a_head, b_head, s, i);
 	}
 	s->faked_node->index = s->last_n_index;
 	while (check_sorted_stack(*a_head) != 0)
-		rra(a_head);
+		rra(a_head, i);
 }
 
-void	sort_six_plus(t_node **a_head, t_node **b_head)
+void	sort_six_plus(t_node **a_head, t_node **b_head, t_i *i)
 {
 	t_sort	s;
 
@@ -84,11 +82,11 @@ void	sort_six_plus(t_node **a_head, t_node **b_head)
 		s.mid = (s.min + s.max) / 2;
 		while (s.to_push)
 		{
-			push_to_b(&s, a_head, b_head);
+			push_to_b(&s, a_head, b_head, i);
 			s.to_push--;
 		}
 		s.size = list_size(*a_head);
 	}
-	sort_five(a_head, b_head);
-	sort_rest(a_head, b_head, &s);
+	sort_five(a_head, b_head, i);
+	sort_rest(a_head, b_head, &s, i);
 }

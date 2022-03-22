@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:16:54 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/08 11:29:44 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/21 17:05:35 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,29 @@ static void	set_index(int *min, int *mid, t_node **head)
 	}
 }
 
-static void	sort_stack(int min, int mid, t_node **head)
+static void	sort_stack(int min, int mid, t_node **head, t_i *i)
 {
 	if ((*head)->index == min)
 	{
-		rra(head);
-		sa(head);
+		rra(head, i);
+		sa(head, i);
 	}
 	else if ((*head)->index == mid)
 	{
 		if ((*head)->next->index == min)
-			sa(head);
+			sa(head, i);
 		else
-			rra(head);
+			rra(head, i);
 	}
 	else
 	{
-		ra(head);
+		ra(head, i);
 		if ((*head)->next->index == min)
-			sa(head);
+			sa(head, i);
 	}
 }
 
-void	sort_three(t_node **head)
+void	sort_three(t_node **head, t_i *i)
 {
 	int	min;
 	int	mid;
@@ -71,5 +71,5 @@ void	sort_three(t_node **head)
 	if (check_sorted_stack(*head) == 0)
 		return ;
 	set_index(&min, &mid, head);
-	sort_stack(min, mid, head);
+	sort_stack(min, mid, head, i);
 }
