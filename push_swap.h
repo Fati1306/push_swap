@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:44:19 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/21 17:34:16 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/22 11:07:48 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ typedef struct s_sort
 
 typedef struct s_instructions
 {
+	int	sa;
+	int	sb;
+	int	pa;
+	int	pb;
 	int	ra;
 	int	rb;
 	int	rra;
@@ -82,7 +86,9 @@ void	rr(t_node **a_head, t_node **b_head, t_i *i);
 void	rra(t_node **a_head, t_i *i);
 void	rrb(t_node **b_head, t_i *i);
 void	rrr(t_node **a_head, t_node **b_head, t_i *i);
-void	check_instructions(t_i *i, int check);
+int		check_instructions(t_i *i);
+void	write_previous_instruction(t_i *i);
+
 
 void	sort_three(t_node **head, t_i *i);
 void	sort_four(t_node **a_head, t_node **b_head, t_i *i);
