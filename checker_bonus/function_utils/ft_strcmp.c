@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 15:14:54 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 14:42:46 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/04 15:51:18 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/23 15:57:42 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../checker_bonus.h"
 
-int	ft_atoi(const char *str)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int				i;
-	unsigned int	num;
-	int				sign;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
 	i = 0;
-	num = 0;
-	sign = 1;
-	if (str[i] == '-')
-		sign *= -1;
-	if (str[i] == '-' || str[i] == '+')
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while (str1[i] && str2[i] && str1[i] == str2[i])
 		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num *= 10;
-		num += str[i] - '0';
-		i++;
-	}
-	if ((num > 2147483648 && sign == -1) || (num > 2147483647 && sign == 1))
-		error_exit();
-	return (num * sign);
+	return (str1[i] - str2[i]);
 }

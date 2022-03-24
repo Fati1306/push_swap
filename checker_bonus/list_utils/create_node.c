@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   create_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 15:14:54 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 14:42:46 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/01/20 14:42:55 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/23 18:12:52 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../checker_bonus.h"
 
-int	ft_atoi(const char *str)
+t_node	*create_node(int data)
 {
-	int				i;
-	unsigned int	num;
-	int				sign;
+	t_node	*new_element;
 
-	i = 0;
-	num = 0;
-	sign = 1;
-	if (str[i] == '-')
-		sign *= -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num *= 10;
-		num += str[i] - '0';
-		i++;
-	}
-	if ((num > 2147483648 && sign == -1) || (num > 2147483647 && sign == 1))
-		error_exit();
-	return (num * sign);
+	new_element = NULL;
+	new_element = (t_node *) malloc(sizeof(t_node));
+	if (new_element == NULL)
+		return (NULL);
+	new_element->data = data;
+	new_element->index = 0;
+	new_element->next = NULL;
+	return (new_element);
 }

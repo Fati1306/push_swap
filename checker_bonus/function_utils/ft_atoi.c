@@ -6,11 +6,11 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:14:54 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 14:42:46 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/23 14:43:01 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../checker_bonus.h"
 
 int	ft_atoi(const char *str)
 {

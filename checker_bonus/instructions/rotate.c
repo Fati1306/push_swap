@@ -6,13 +6,13 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 11:24:58 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 20:29:45 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/24 06:43:52 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../checker_bonus.h"
 
-static void	rotate(t_node **head)
+static void	rotate(t_node **head, char **inst, char **p)
 {
 	t_node	*temp;
 
@@ -20,43 +20,26 @@ static void	rotate(t_node **head)
 	{
 		temp = last_node(*head);
 		temp->next = *head;
-		temp->next->previous = temp;
 		*head = (*head)->next;
-		(*head)->previous = NULL;
 		temp->next->next = NULL;
 	}
 	else
-		error_exit();
+		free_and_exit(2, inst, p);
+
 }
 
-void	ra(t_node **a_head, t_i *i)
+void	ra_b(t_node **a_head, char **inst, char **p)
 {
-	rotate(a_head);
-	i->ra++;
-	if (!check_instructions(i))
-	{
-		i->ra--;
-		write_previous_instruction(i);
-		i->ra = 1;
-	}
+	rotate(a_head, inst, p);
 }
 
-void	rb(t_node **b_head, t_i *i)
+void	rb_b(t_node **b_head, char **inst, char **p)
 {
-	rotate(b_head);
-	i->rb++;
-	if (!check_instructions(i))
-	{
-		i->rb--;
-		write_previous_instruction(i);
-		i->rb = 1;
-	}
+	rotate(b_head, inst, p);
 }
 
-void	rr(t_node **a_head, t_node **b_head, t_i *i)
+void	rr_b(t_node **a_head, t_node **b_head, char **inst, char **p)
 {
-	rotate(a_head);
-	rotate(b_head);
-	check_instructions(i);
-	write(1, "rr\n", 3);
+	rotate(a_head, inst, p);
+	rotate(b_head, inst, p);
 }

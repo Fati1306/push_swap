@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 15:14:54 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 14:42:46 by fel-maac         ###   ########.fr       */
+/*   Created: 2021/11/02 11:27:37 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/23 14:43:28 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../checker_bonus.h"
 
-int	ft_atoi(const char *str)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int				i;
-	unsigned int	num;
-	int				sign;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
-	num = 0;
-	sign = 1;
-	if (str[i] == '-')
-		sign *= -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	len = 0;
+	while (src[len])
+		len++;
+	if (!dst || !src || !dstsize)
+		return (len);
+	while (src[i] && i < dstsize - 1)
 	{
-		num *= 10;
-		num += str[i] - '0';
+		dst[i] = src[i];
 		i++;
 	}
-	if ((num > 2147483648 && sign == -1) || (num > 2147483647 && sign == 1))
-		error_exit();
-	return (num * sign);
+	dst[i] = '\0';
+	return (len);
 }

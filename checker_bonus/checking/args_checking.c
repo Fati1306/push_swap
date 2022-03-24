@@ -6,11 +6,11 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 14:53:34 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/22 18:12:53 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/23 14:37:59 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../checker_bonus.h"
 
 static void	check_if_int(int ac, char **av)
 {

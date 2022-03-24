@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 14:27:44 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/21 17:12:42 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:29:26 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	push_to_b(t_sort *s, t_node **a_head, t_node **b_head, t_i *i)
 			ra(a_head, i);
 	}
 	pb(b_head, a_head, i);
-	if ((*b_head)->index < s->mid)
+	if ((*b_head)->index < s->mid && list_size(*b_head) > 1)
 		rb(b_head, i);
 }
 

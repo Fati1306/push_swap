@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   add_to_back.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 15:14:54 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 14:42:46 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/01/20 14:47:01 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/23 18:13:03 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../checker_bonus.h"
 
-int	ft_atoi(const char *str)
+void	add_to_back(t_node **lst, t_node *new)
 {
-	int				i;
-	unsigned int	num;
-	int				sign;
+	t_node	*tmp;
 
-	i = 0;
-	num = 0;
-	sign = 1;
-	if (str[i] == '-')
-		sign *= -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	if (lst)
 	{
-		num *= 10;
-		num += str[i] - '0';
-		i++;
+		if (*lst == NULL)
+			*lst = new;
+		else
+		{
+			tmp = last_node(*lst);
+			tmp->next = new;
+		}
 	}
-	if ((num > 2147483648 && sign == -1) || (num > 2147483647 && sign == 1))
-		error_exit();
-	return (num * sign);
 }

@@ -6,48 +6,39 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:44:59 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 20:19:37 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/24 06:44:00 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../checker_bonus.h"
 
-static void	swap(t_node **head)
+static void	swap(t_node **head, char **inst, char **p)
 {
 	t_node	*new_head;
 
 	if (*head && (*head)->next)
 	{
 		new_head = (*head)->next;
-		new_head->previous = NULL;
 		(*head)->next = (*head)->next->next;
-		(*head)->next->previous = (*head);
-		(*head)->previous = new_head;
 		new_head->next = *head;
 		*head = new_head;
 	}
 	else
-		error_exit();
+		free_and_exit(2, inst, p);
 }
 
-void	sa(t_node **a_head, t_i *i)
+void	sa_b(t_node **a_head, char **inst, char **p)
 {
-	write_previous_instruction(i);
-	swap(a_head);
-	i->sa = 1;
+	swap(a_head, inst, p);
 }
 
-void	sb(t_node **b_head, t_i *i)
+void	sb_b(t_node **b_head, char **inst, char **p)
 {
-	write_previous_instruction(i);
-	swap(b_head);
-	i->sb = 1;
+	swap(b_head, inst, p);
 }
 
-void	ss(t_node **a_head, t_node **b_head, t_i *i)
+void	ss_b(t_node **a_head, t_node **b_head, char **inst, char **p)
 {
-	swap(a_head);
-	swap(b_head);
-	write_previous_instruction(i);
-	write(1, "ss\n", 3);
+	swap(a_head, inst, p);
+	swap(b_head, inst, p);
 }

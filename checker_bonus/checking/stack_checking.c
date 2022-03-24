@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   stack_checking.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 15:14:54 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 14:42:46 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/04 18:02:15 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/23 14:38:09 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../checker_bonus.h"
 
-int	ft_atoi(const char *str)
+int	check_sorted_stack(t_node *list)
 {
-	int				i;
-	unsigned int	num;
-	int				sign;
+	int	num;
 
-	i = 0;
-	num = 0;
-	sign = 1;
-	if (str[i] == '-')
-		sign *= -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	num = list->data;
+	while (list->next)
 	{
-		num *= 10;
-		num += str[i] - '0';
-		i++;
+		list = list->next;
+		if (num >= list->data)
+			return (1);
+		num = list->data;
 	}
-	if ((num > 2147483648 && sign == -1) || (num > 2147483647 && sign == 1))
-		error_exit();
-	return (num * sign);
+	return (0);
 }

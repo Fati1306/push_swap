@@ -6,13 +6,13 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 11:12:45 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 20:18:00 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/24 06:43:30 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../checker_bonus.h"
 
-static void	push(t_node **first_head, t_node **second_head)
+static void	push(t_node **first_head, t_node **second_head, char **inst, char **p)
 {
 	t_node	*temp;
 
@@ -20,27 +20,19 @@ static void	push(t_node **first_head, t_node **second_head)
 	{
 		temp = *second_head;
 		*second_head = (*second_head)->next;
-		if (*second_head)
-			(*second_head)->previous = NULL;
 		temp->next = *first_head;
-		if (*first_head)
-			(*first_head)->previous = temp;
 		*first_head = temp;
 	}
 	else
-		error_exit();
+		free_and_exit(2, inst, p);
 }
 
-void	pa(t_node **a_head, t_node **b_head, t_i *i)
+void	pa_b(t_node **a_head, t_node **b_head, char **inst, char **p)
 {
-	write_previous_instruction(i);
-	push(a_head, b_head);
-	i->pa = 1;
+	push(a_head, b_head, inst, p);
 }
 
-void	pb(t_node **b_head, t_node **a_head, t_i *i)
+void	pb_b(t_node **b_head, t_node **a_head, char **inst, char **p)
 {
-	write_previous_instruction(i);
-	push(b_head, a_head);
-	i->pb = 1;
+	push(b_head, a_head, inst, p);
 }

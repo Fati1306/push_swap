@@ -6,12 +6,11 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:47:01 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/20 11:19:55 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:43:13 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdio.h>
 
 void	add_to_back(t_node **lst, t_node *new)
 {
