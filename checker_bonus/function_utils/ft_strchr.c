@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack_a.c                                     :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 18:40:30 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/24 17:16:19 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/24 16:40:26 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/24 16:47:34 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker_bonus.h"
 
-void	init_stack_a(t_node **a_head, int ac, char **av, int check)
+char	*ft_strchr(const char *s, int c)
 {
 	int		i;
-	t_node	*new_node;
+	char	*str;
 
-	if (!check)
-		i = -1;
-	else
-		i = 0;
-	while (++i < ac)
+	i = 0;
+	c = (char)c;
+	str = (char *)s;
+	while (str[i])
 	{
-		if ((!check && i == -1) || (check == 1 && i == 0))
-			*a_head = create_node(ft_atoi(av[i]));
-		else
-		{
-			new_node = create_node(ft_atoi(av[i]));
-			add_to_back(a_head, new_node);
-		}
+		if (str[i] == c)
+			return (str + i);
+		i++;
 	}
+	if (str[i] == c)
+		return (str + i);
+	return (NULL);
 }

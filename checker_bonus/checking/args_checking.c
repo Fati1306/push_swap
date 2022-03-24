@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 14:53:34 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 14:37:59 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/24 17:31:28 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,16 @@ static void	check_if_int(int ac, char **av)
 	}
 }
 
-static void	check_duplicates(int ac, char **av)
+static void	check_duplicates(int ac, char **av, int check)
 {
 	int		j;
 
 	while (--ac)
 	{
-		j = 1;
+		if (!check)
+			j = 1;
+		else
+			j = 0;
 		while (j < ac)
 		{
 			if (ft_strcmp(av[ac], av[j]) == 0)
@@ -46,11 +49,14 @@ static void	check_duplicates(int ac, char **av)
 	}
 }
 
-static void	check_if_empty(int ac, char **av)
+static void	check_if_empty(int ac, char **av, int check)
 {
 	int	i;
 
-	i = 1;
+	if (!check)
+		i = 1;
+	else
+		i = 0;
 	while (i < ac)
 	{
 		if (av[i][0] == '\0')
@@ -59,9 +65,9 @@ static void	check_if_empty(int ac, char **av)
 	}
 }
 
-void	check_args(int ac, char **av)
+void	check_args(int ac, char **av, int check)
 {
-	check_if_empty(ac, av);
+	check_if_empty(ac, av, check);
 	check_if_int(ac, av);
-	check_duplicates(ac, av);
+	check_duplicates(ac, av, check);
 }

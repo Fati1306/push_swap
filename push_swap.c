@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:48:12 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 20:06:42 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/24 16:57:46 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 	check_args(ac, av);
 	if (ac <= 2)
 		exit(0);
-	init_stack_a(&a_head, ac, av);
+	init_stack_a(&a_head, ac, av, 0);
 	if (check_sorted_stack(a_head) == 0)
 		return (0);
 	sort_stack(ac - 1, &a_head, &b_head);

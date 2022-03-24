@@ -6,18 +6,21 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:40:30 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/22 18:40:54 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/24 16:58:27 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	init_stack_a(t_node **a_head, int ac, char **av)
+void	init_stack_a(t_node **a_head, int ac, char **av, int check)
 {
 	int		i;
 	t_node	*new_node;
 
-	i = 0;
+	if (!check)
+		i = 0;
+	else
+		i = -1;
 	while (++i < ac)
 	{
 		if (i == 1)

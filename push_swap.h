@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:44:19 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/22 18:16:12 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/24 16:58:00 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		ft_strcmp(char *s1, char *s2);
 
 void	error_exit(void);
 void	init_i(t_i *i);
-void	init_stack_a(t_node **a_head, int ac, char **av);
+void	init_stack_a(t_node **a_head, int ac, char **av, int check);
 
 void	check_args(int ac, char **av);
 int		check_sorted_stack(t_node *head);

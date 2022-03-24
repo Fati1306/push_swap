@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack_a.c                                     :+:      :+:    :+:   */
+/*   parse_av.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 18:40:30 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/24 17:16:19 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/24 16:45:39 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/24 17:27:36 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker_bonus.h"
 
-void	init_stack_a(t_node **a_head, int ac, char **av, int check)
+void	parse_av(t_node **a_head, char **av, char ***args)
 {
 	int		i;
-	t_node	*new_node;
+	int		len;
 
-	if (!check)
-		i = -1;
-	else
-		i = 0;
-	while (++i < ac)
-	{
-		if ((!check && i == -1) || (check == 1 && i == 0))
-			*a_head = create_node(ft_atoi(av[i]));
-		else
-		{
-			new_node = create_node(ft_atoi(av[i]));
-			add_to_back(a_head, new_node);
-		}
-	}
+	i = 0;
+	len = 0;
+	*args = ft_split(av[1], ' ');
+	if (*args == NULL)
+		error_exit();
+	while ((*args)[len])
+		len++;
+	check_args(len, *args, 1);
+	init_stack_a(a_head, len, *args, 0);
 }
