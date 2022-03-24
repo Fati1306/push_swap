@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_av.c                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 16:45:39 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/24 17:51:12 by fel-maac         ###   ########.fr       */
+/*   Created: 2022/03/24 16:40:26 by fel-maac          #+#    #+#             */
+/*   Updated: 2022/03/24 17:42:25 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker_bonus.h"
+#include "../push_swap.h"
 
-void	parse_av(t_node **a_head, char **av, char ***args)
+char	*ft_strchr(const char *s, int c)
 {
 	int		i;
-	int		len;
+	char	*str;
 
 	i = 0;
-	len = 0;
-	*args = ft_split(av[1], ' ');
-	if (*args == NULL)
-		error_exit();
-	while ((*args)[len])
-		len++;
-	check_args(len, *args, 0);
-	init_stack_a(a_head, len, *args, 0);
+	c = (char)c;
+	str = (char *)s;
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (str + i);
+		i++;
+	}
+	if (str[i] == c)
+		return (str + i);
+	return (NULL);
 }

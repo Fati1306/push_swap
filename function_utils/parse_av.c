@@ -6,11 +6,11 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:45:39 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/24 17:51:12 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/24 17:53:39 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker_bonus.h"
+#include "../push_swap.h"
 
 void	parse_av(t_node **a_head, char **av, char ***args)
 {

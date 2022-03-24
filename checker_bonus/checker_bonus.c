@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:43:51 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/24 17:33:45 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/24 17:51:19 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,17 +105,15 @@ int	main(int ac, char **av)
 	t_node	*a_head;
 	t_node	*b_head;
 	char	**args;
-	int		i;
 
 	a_head = NULL;
 	b_head = NULL;
 	args = NULL;
-	i = 0;
 	if (ac == 2 && ft_strchr(av[1], ' ') != NULL)
 		parse_av(&a_head, av, &args);
 	else
 	{
-		check_args(ac, av, 0);
+		check_args(ac, av, 1);
 		if (ac <= 2)
 			exit(0);
 		init_stack_a(&a_head, ac, av, 1);

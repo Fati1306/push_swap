@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:44:19 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/24 16:58:00 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/24 17:43:15 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,15 @@ int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strcmp(char *s1, char *s2);
+char	*ft_strchr(const char *s, int c);
+char	**ft_split(char const *s, char c);
+void	parse_av(t_node **a_head, char **av, char ***args);
 
 void	error_exit(void);
 void	init_i(t_i *i);
 void	init_stack_a(t_node **a_head, int ac, char **av, int check);
 
-void	check_args(int ac, char **av);
+void	check_args(int ac, char **av, int check);
 int		check_sorted_stack(t_node *head);
 
 t_node	*create_node(int data);

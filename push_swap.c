@@ -6,12 +6,13 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:48:12 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/24 16:57:46 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/24 17:57:42 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 // to do: remove print function + itoa
+
 static void	sort_stack(int nums, t_node **a_head, t_node **b_head)
 {
 	t_i	i;
@@ -39,18 +40,23 @@ int	main(int ac, char **av)
 {
 	t_node	*a_head;
 	t_node	*b_head;
+	char	**args;
 
 	a_head = NULL;
 	b_head = NULL;
-	check_args(ac, av);
-	if (ac <= 2)
-		exit(0);
-	init_stack_a(&a_head, ac, av, 0);
+	args = NULL;
+	if (ac == 2 && ft_strchr(av[1], ' ') != NULL)
+		parse_av(&a_head, av, &args);
+	else
+	{
+		check_args(ac, av, 1);
+		if (ac <= 2)
+			exit(0);
+		init_stack_a(&a_head, ac, av, 1);
+	}
 	if (check_sorted_stack(a_head) == 0)
 		return (0);
 	sort_stack(ac - 1, &a_head, &b_head);
-	free_list(a_head);
-	free_list(b_head);
+	// system("leaks push_swap");
 	return (0);
 }
-	// system("leaks push_swap");
