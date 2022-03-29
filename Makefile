@@ -20,17 +20,17 @@ RM = rm -f
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I.
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I. -fsanitize=address
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I.
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I. -fsanitize=address -static-libsan
 
 	
 test:
 	./push_swap 14 45 48 34 40 26 1 5 20 0 25 32 12 9 49 36 18 41 33 4 50 30 39 13 21 19 43 31 22 7 44 11 35 23 42 28 2 15 8 24 17 37 46 27 10 3 47 16 6 38 29
 
 bonus: $(BONUS_OBJS)
-	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME) -I ./checker_bonus/.
+	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME) -I ./checker_bonus/. -fsanitize=address
 
 clean:
 	$(RM) $(OBJS) $(BONUS_OBJS)
