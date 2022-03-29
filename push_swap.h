@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:44:19 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/29 11:15:25 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/29 14:57:32 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ typedef struct s_instructions
 
 void	ft_putstr(char *s);
 int		ft_atoi(const char *str);
-char	*ft_itoa(int n);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strchr(const char *s, int c);
 char	**ft_split(char const *s, char c);
@@ -69,7 +67,6 @@ t_node	*create_node(int data);
 void	add_to_back(t_node **lst, t_node *new);
 t_node	*last_node(t_node *lst);
 int		last_node_index(t_node *lst);
-void	print_list(t_node *lst);
 void	free_list(t_node *list);
 t_node	*before_last_node(t_node *lst);
 void	index_stack(t_node **head);

@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:44:59 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/29 11:01:01 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/29 14:40:48 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static void	swap(t_node **head)
 		new_head->next = *head;
 		*head = new_head;
 	}
-	else
-		error_exit();
 }
 
 void	sa(t_node **a_head, t_i *i)

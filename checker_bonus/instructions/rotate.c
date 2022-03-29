@@ -6,13 +6,13 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 11:24:58 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/24 16:34:01 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/29 14:44:43 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker_bonus.h"
 
-static void	rotate(t_node **head, char **inst, char **p)
+static void	rotate(t_node **head)
 {
 	t_node	*temp;
 
@@ -23,22 +23,20 @@ static void	rotate(t_node **head, char **inst, char **p)
 		*head = (*head)->next;
 		temp->next->next = NULL;
 	}
-	else
-		free_and_exit(2, inst, p);
 }
 
-void	ra_b(t_node **a_head, char **inst, char **p)
+void	ra_b(t_node **a_head)
 {
-	rotate(a_head, inst, p);
+	rotate(a_head);
 }
 
-void	rb_b(t_node **b_head, char **inst, char **p)
+void	rb_b(t_node **b_head)
 {
-	rotate(b_head, inst, p);
+	rotate(b_head);
 }
 
-void	rr_b(t_node **a_head, t_node **b_head, char **inst, char **p)
+void	rr_b(t_node **a_head, t_node **b_head)
 {
-	rotate(a_head, inst, p);
-	rotate(b_head, inst, p);
+	rotate(a_head);
+	rotate(b_head);
 }

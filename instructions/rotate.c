@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 11:24:58 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/29 11:14:57 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/29 14:40:42 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static void	rotate(t_node **head)
 		(*head)->previous = NULL;
 		temp->next->next = NULL;
 	}
-	else
-		error_exit();
 }
 
 void	ra(t_node **a_head, t_i *i)

@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 11:12:45 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 20:18:00 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/29 14:40:32 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static void	push(t_node **first_head, t_node **second_head)
 			(*first_head)->previous = temp;
 		*first_head = temp;
 	}
-	else
-		error_exit();
 }
 
 void	pa(t_node **a_head, t_node **b_head, t_i *i)

@@ -6,57 +6,36 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:43:51 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/24 17:51:19 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/29 15:05:22 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//TODO: ctr d when needs to check if sorted too
-
 #include "checker_bonus.h"
-
-#include <stdio.h>
-
-void	print_list(t_node *lst)
-{
-	char	*str;
-
-	if (lst)
-	{
-		printf("list:\n");
-		while (lst != NULL)
-		{
-			str = ft_itoa((lst->data));
-			printf("%s\n", str);
-			free(str);
-			lst = lst->next;
-		}
-	}
-}
 
 static void	find_instr_2(char **inst, char **p, t_node **a, t_node **b)
 {
 	if (ft_strcmp(*inst, "sa\n") == 0)
-		sa_b(a, inst, p);
+		sa_b(a);
 	else if (ft_strcmp(*inst, "sb\n") == 0)
-		sb_b(b, inst, p);
+		sb_b(b);
 	else if (ft_strcmp(*inst, "ss\n") == 0)
-		ss_b(a, b, inst, p);
+		ss_b(a, b);
 	else if (ft_strcmp(*inst, "pa\n") == 0)
-		pa_b(a, b, inst, p);
+		pa_b(a, b);
 	else if (ft_strcmp(*inst, "pb\n") == 0)
-		pb_b(b, a, inst, p);
+		pb_b(b, a);
 	else if (ft_strcmp(*inst, "ra\n") == 0)
-		ra_b(a, inst, p);
+		ra_b(a);
 	else if (ft_strcmp(*inst, "rb\n") == 0)
-		rb_b(b, inst, p);
+		rb_b(b);
 	else if (ft_strcmp(*inst, "rr\n") == 0)
-		rr_b(a, b, inst, p);
+		rr_b(a, b);
 	else if (ft_strcmp(*inst, "rra\n") == 0)
-		rra_b(a, inst, p);
+		rra_b(a);
 	else if (ft_strcmp(*inst, "rrb\n") == 0)
-		rrb_b(b, inst, p);
+		rrb_b(b);
 	else if (ft_strcmp(*inst, "rrr\n") == 0)
-		rrr_b(a, b, inst, p);
+		rrr_b(a, b);
 	else
 		free_and_exit(2, inst, p);
 }
@@ -118,7 +97,6 @@ int	main(int ac, char **av)
 			exit(0);
 		init_stack_a(&a_head, ac, av, 1);
 	}
-	print_list(a_head);
 	read_instructions(&a_head, &b_head);
 	return (0);
 }
