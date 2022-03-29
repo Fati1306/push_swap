@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:48:12 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/25 15:00:11 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/29 10:59:48 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ int	main(int ac, char **av)
 	if (check_sorted_stack(a_head) == 0)
 		return (0);
 	sort_stack(ac - 1, &a_head, &b_head);
+	// system("leaks push_swap");
 	return (0);
 }
-	// system("leaks push_swap");

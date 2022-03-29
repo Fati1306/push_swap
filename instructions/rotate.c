@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 11:24:58 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/23 20:29:45 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/29 11:14:57 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,4 @@ void	rb(t_node **b_head, t_i *i)
 		write_previous_instruction(i);
 		i->rb = 1;
 	}
-}
-
-void	rr(t_node **a_head, t_node **b_head, t_i *i)
-{
-	rotate(a_head);
-	rotate(b_head);
-	check_instructions(i);
-	write(1, "rr\n", 3);
 }

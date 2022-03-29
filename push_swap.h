@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:44:19 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/24 17:43:15 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/29 11:15:25 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,12 @@ int		search_for_index(t_node **b_head, int index);
 
 void	sa(t_node **a_head, t_i *i);
 void	sb(t_node **b_head, t_i *i);
-void	ss(t_node **a_head, t_node **b_head, t_i *i);
 void	pa(t_node **a_head, t_node **b_head, t_i *i);
 void	pb(t_node **b_head, t_node **a_head, t_i *i);
 void	ra(t_node **a_head, t_i *i);
 void	rb(t_node **b_head, t_i *i);
-void	rr(t_node **a_head, t_node **b_head, t_i *i);
 void	rra(t_node **a_head, t_i *i);
 void	rrb(t_node **b_head, t_i *i);
-void	rrr(t_node **a_head, t_node **b_head, t_i *i);
 int		check_instructions(t_i *i);
 void	write_previous_instruction(t_i *i);
 
