@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:48:12 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/24 17:57:42 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/25 15:00:11 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,14 @@ static void	sort_stack(int nums, t_node **a_head, t_node **b_head)
 	t_i	i;
 
 	init_i(&i);
-	if (nums == 2)
+	if (nums == 2 && check_sorted_stack(*a_head) != 0)
 	{
-		ra(a_head, &i);
+		sa(a_head, &i);
+		write_previous_instruction(&i);
 		return ;
 	}
+	else if (nums == 2)
+		return ;
 	else
 		index_stack(a_head);
 	if (nums == 3)
@@ -57,6 +60,6 @@ int	main(int ac, char **av)
 	if (check_sorted_stack(a_head) == 0)
 		return (0);
 	sort_stack(ac - 1, &a_head, &b_head);
-	// system("leaks push_swap");
 	return (0);
 }
+	// system("leaks push_swap");
