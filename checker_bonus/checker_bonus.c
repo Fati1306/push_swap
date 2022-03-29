@@ -6,7 +6,7 @@
 /*   By: fel-maac <fel-maac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:43:51 by fel-maac          #+#    #+#             */
-/*   Updated: 2022/03/29 15:05:22 by fel-maac         ###   ########.fr       */
+/*   Updated: 2022/03/29 20:26:36 by fel-maac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,12 @@ static void	read_instructions(t_node **a, t_node **b)
 
 	inst = ft_strdup("");
 	p = NULL;
-	p = (char *) malloc(sizeof(char));
+	p = (char *) malloc(sizeof(char) * 2);
 	if (p == NULL || read(0, p, 0) == -1)
 		exit(0);
 	while (read(0, p, 1) > 0)
 	{
+		p[1] = '\0';
 		inst = ft_strjoin(inst, p);
 		if (p[0] == '\n')
 		{
